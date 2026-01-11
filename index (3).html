@@ -1,0 +1,1429 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广州花视拍照摄影有限公司 - 亲子写真拍摄</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4A6FA5',
+                        secondary: '#86A5D9',
+                        accent: '#E6826F',
+                        light: '#F8F9FA',
+                        dark: '#343A40'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Playfair Display', 'serif']
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))"
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+            .hover-scale:hover {
+                transform: scale(1.03);
+            }
+            .glass-effect {
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+        }
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(74, 111, 165, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .price-card {
+            transition: all 0.3s ease;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #4A6FA5;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.hidden {
+            transform: translateX(-100%);
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 10;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .ai-recommendation {
+            transition: all 0.3s ease;
+        }
+        
+        .ai-recommendation:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-primary">花视摄影</a>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-dark hover:text-primary transition-colors">首页</a>
+                    <a href="#about" class="nav-link text-dark hover:text-primary transition-colors">关于我们</a>
+                    <a href="#services" class="nav-link text-dark hover:text-primary transition-colors">服务项目</a>
+                    <a href="#gallery" class="nav-link text-dark hover:text-primary transition-colors">作品展示</a>
+                    <a href="#pricing" class="nav-link text-dark hover:text-primary transition-colors">套餐价格</a>
+                    <a href="#testimonials" class="nav-link text-dark hover:text-primary transition-colors">客户评价</a>
+                    <a href="#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors">立即预约</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-dark focus:outline-none">
+                        <i class="fa fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-dark hover:text-primary py-2 transition-colors">首页</a>
+                    <a href="#about" class="text-dark hover:text-primary py-2 transition-colors">关于我们</a>
+                    <a href="#services" class="text-dark hover:text-primary py-2 transition-colors">服务项目</a>
+                    <a href="#gallery" class="text-dark hover:text-primary py-2 transition-colors">作品展示</a>
+                    <a href="#pricing" class="text-dark hover:text-primary py-2 transition-colors">套餐价格</a>
+                    <a href="#testimonials" class="text-dark hover:text-primary py-2 transition-colors">客户评价</a>
+                    <a href="#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors text-center">立即预约</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="hero-section">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/30c87332c80745cb99085e33c747bc78.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=5C1U6HjEHmB%2B3xp2c6WxN2gsaPc%3D" alt="亲子写真" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            </div>
+            <div class="hero-slide">
+                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/306ada5cfb314bf596509d9b8479affc.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=gFWnjvzNDP9WmTBM2A4ETgetLlw%3D" alt="亲子写真" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            </div>
+            <div class="hero-slide">
+                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/65b2f4e2f20c49a0ba501fc9573d654e.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=EHJ7rZ1gPgSz%2BV1cz8ZhPJXlYu0%3D" alt="亲子写真" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            </div>
+        </div>
+        
+        <div class="hero-content flex flex-col items-center justify-center h-full text-white text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-shadow" data-aos="fade-up" data-aos-delay="100">记录美好亲子时光</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl text-shadow" data-aos="fade-up" data-aos-delay="200">专业亲子写真拍摄，为您和孩子留下珍贵的成长记忆</p>
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4" data-aos="fade-up" data-aos-delay="300">
+                <a href="#gallery" class="bg-white text-primary px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors">查看作品</a>
+                <a href="#contact" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors">立即预约</a>
+            </div>
+        </div>
+        
+        <a href="#about" class="scroll-down text-white">
+            <i class="fa fa-chevron-down text-2xl"></i>
+        </a>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">关于花视摄影</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">我们致力于捕捉家庭的温馨瞬间，用专业的摄影技术为您和孩子创造永恒的美好回忆</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                    <div class="relative">
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/11460fca8505463bbe605d07cb8ec3fc.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=qjUM%2BzAfdFjVHtLktwxR1dgpLKI%3D" alt="关于我们" class="rounded-lg shadow-xl w-full">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+                            <p class="text-4xl font-bold text-primary">10+</p>
+                            <p class="text-gray-600">年专业经验</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-4">我们的理念</h3>
+                    <p class="text-gray-600 mb-6">在花视摄影，我们相信每个家庭都有独特的故事值得被记录。我们不仅仅是拍摄照片，更是在捕捉情感、连接和成长的瞬间。</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full p-2 mr-4">
+                                <i class="fa fa-camera"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">专业团队</h4>
+                                <p class="text-gray-600">我们的摄影师团队拥有丰富的儿童摄影经验，善于捕捉孩子最真实的表情</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full p-2 mr-4">
+                                <i class="fa fa-paint-brush"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">创意拍摄</h4>
+                                <p class="text-gray-600">提供多样化的拍摄风格和场景，满足不同家庭的个性化需求</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full p-2 mr-4">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">贴心服务</h4>
+                                <p class="text-gray-600">从预约咨询到拍摄完成，全程提供专业贴心的服务体验</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务项目 -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">我们的服务</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">为您提供全方位的亲子写真拍摄服务，创造专属于您家庭的美好回忆</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8 hover-scale transition-transform" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fa fa-child text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">儿童写真</h3>
+                    <p class="text-gray-600 mb-4">专业捕捉孩子成长的每一个精彩瞬间，记录他们的天真可爱与纯真笑容</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>多种主题场景</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>专业服装造型</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>精修数码照片</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">了解更多 <i class="fa fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 hover-scale transition-transform" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fa fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">亲子合影</h3>
+                    <p class="text-gray-600 mb-4">记录您与孩子之间的温馨互动，捕捉亲子间最真实、最动人的情感瞬间</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>互动式拍摄</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>情感捕捉</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>定制化场景</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">了解更多 <i class="fa fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 hover-scale transition-transform" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fa fa-home text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">家庭照</h3>
+                    <p class="text-gray-600 mb-4">为您的家庭打造温馨和谐的集体照，记录全家人在一起的幸福时光</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>多人组合拍摄</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>室内外场景可选</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>精美相册制作</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">了解更多 <i class="fa fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 hover-scale transition-transform" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fa fa-birthday-cake text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">生日主题</h3>
+                    <p class="text-gray-600 mb-4">为孩子的生日打造特别的主题拍摄，记录成长的重要里程碑</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>生日主题布置</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>生日蛋糕拍摄</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>派对氛围捕捉</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">了解更多 <i class="fa fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 hover-scale transition-transform" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fa fa-tree text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">外景拍摄</h3>
+                    <p class="text-gray-600 mb-4">在自然环境中捕捉孩子的活力与纯真，创造清新自然的照片风格</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>公园绿地拍摄</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>季节主题拍摄</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>自然光线捕捉</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">了解更多 <i class="fa fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 hover-scale transition-transform" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fa fa-image text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">产品定制</h3>
+                    <p class="text-gray-600 mb-4">提供多种照片产品定制服务，让美好回忆以不同形式陪伴您</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>精美相册制作</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>相框摆台定制</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>纪念品制作</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">了解更多 <i class="fa fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">作品展示</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">浏览我们的精选作品，感受不同风格的亲子写真魅力</p>
+            </div>
+            
+            <!-- 作品分类筛选 -->
+            <div class="flex flex-wrap justify-center mb-10" data-aos="fade-up" data-aos-delay="300">
+                <button class="gallery-filter-btn active m-2 px-6 py-2 rounded-full bg-primary text-white hover:bg-opacity-90 transition-colors" data-filter="all">全部</button>
+                <button class="gallery-filter-btn m-2 px-6 py-2 rounded-full bg-gray-200 text-dark hover:bg-gray-300 transition-colors" data-filter="children">儿童写真</button>
+                <button class="gallery-filter-btn m-2 px-6 py-2 rounded-full bg-gray-200 text-dark hover:bg-gray-300 transition-colors" data-filter="parent-child">亲子合影</button>
+                <button class="gallery-filter-btn m-2 px-6 py-2 rounded-full bg-gray-200 text-dark hover:bg-gray-300 transition-colors" data-filter="family">家庭照</button>
+                <button class="gallery-filter-btn m-2 px-6 py-2 rounded-full bg-gray-200 text-dark hover:bg-gray-300 transition-colors" data-filter="outdoor">外景拍摄</button>
+            </div>
+            
+            <!-- 作品网格 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children parent-child outdoor" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/30c87332c80745cb99085e33c747bc78.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=5C1U6HjEHmB%2B3xp2c6WxN2gsaPc%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/30c87332c80745cb99085e33c747bc78.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=5C1U6HjEHmB%2B3xp2c6WxN2gsaPc%3D">查看大图</button>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children parent-child outdoor" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/306ada5cfb314bf596509d9b8479affc.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=gFWnjvzNDP9WmTBM2A4ETgetLlw%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/306ada5cfb314bf596509d9b8479affc.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=gFWnjvzNDP9WmTBM2A4ETgetLlw%3D">查看大图</button>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children parent-child outdoor" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/65b2f4e2f20c49a0ba501fc9573d654e.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=EHJ7rZ1gPgSz%2BV1cz8ZhPJXlYu0%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/65b2f4e2f20c49a0ba501fc9573d654e.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=EHJ7rZ1gPgSz%2BV1cz8ZhPJXlYu0%3D">查看大图</button>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/deb6a8b962934a2caa07054395380fd9.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=iM%2BYj%2BQz5%2F5%2BH3PRlMQmX4ch8Xc%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/deb6a8b962934a2caa07054395380fd9.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=iM%2BYj%2BQz5%2F5%2BH3PRlMQmX4ch8Xc%3D">查看大图</button>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children parent-child" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/11460fca8505463bbe605d07cb8ec3fc.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=qjUM%2BzAfdFjVHtLktwxR1dgpLKI%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/11460fca8505463bbe605d07cb8ec3fc.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=qjUM%2BzAfdFjVHtLktwxR1dgpLKI%3D">查看大图</button>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children outdoor" data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/89a33413566541208500edb7d7a39d5b.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=lVNNGJo8iMrMk4jX3Mapros0Q4g%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/89a33413566541208500edb7d7a39d5b.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=lVNNGJo8iMrMk4jX3Mapros0Q4g%3D">查看大图</button>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children parent-child outdoor" data-aos="fade-up" data-aos-delay="700">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/e0a07e723e8e4f829ca012fddef86bd8.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=kUx%2BJ4wYb8FSdRy5VA955YR4xfs%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/e0a07e723e8e4f829ca012fddef86bd8.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=kUx%2BJ4wYb8FSdRy5VA955YR4xfs%3D">查看大图</button>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children parent-child outdoor" data-aos="fade-up" data-aos-delay="800">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a90794bef1e648989923a88f607e0c5a.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=NqoqUSLkxMecySFm%2BPTB88BwBz4%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a90794bef1e648989923a88f607e0c5a.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=NqoqUSLkxMecySFm%2BPTB88BwBz4%3D">查看大图</button>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg" data-category="children parent-child outdoor" data-aos="fade-up" data-aos-delay="900">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/2ffada1530db4175af0060069d0d157f.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=Epk9Ot4enK95B2HbeRP1ayGUkWo%3D" alt="亲子写真" class="w-full h-80 object-cover">
+                    <div class="gallery-overlay">
+                        <button class="view-image bg-white text-primary px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors" data-image="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/2ffada1530db4175af0060069d0d157f.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=2025122417083344EF1AEDD4C95BE4AA93&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1767172114&amp;x-signature=Epk9Ot4enK95B2HbeRP1ayGUkWo%3D">查看大图</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors" data-aos="fade-up">预约拍摄</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 套餐价格 -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">套餐价格</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">我们提供多种套餐选择，满足不同家庭的需求，为您打造专属的亲子写真体验</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 基础套餐 -->
+                <div class="price-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gray-100 p-6">
+                        <h3 class="text-xl font-bold text-center mb-2">基础套餐</h3>
+                        <p class="text-center text-gray-600 mb-4">适合初次尝试的家庭</p>
+                        <div class="text-center">
+                            <span class="text-4xl font-bold">¥699</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>拍摄时长：1小时</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>服装造型：1套</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>精修照片：10张</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>短视频：15S</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>7寸摆台1个</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>电子相册1份</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="select-package w-full bg-gray-200 text-dark py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors" data-package="基础套餐" data-price="699">选择套餐</button>
+                    </div>
+                </div>
+                
+                <!-- 精选套餐 -->
+                <div class="price-card bg-white rounded-lg shadow-xl overflow-hidden transform scale-105 z-10" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-primary p-6">
+                        <div class="absolute top-0 right-0 bg-accent text-white px-4 py-1 text-sm font-medium">热门选择</div>
+                        <h3 class="text-xl font-bold text-center text-white mb-2">精选套餐</h3>
+                        <p class="text-center text-white text-opacity-90 mb-4">最受欢迎的套餐选择</p>
+                        <div class="text-center">
+                            <span class="text-4xl font-bold text-white">¥1299</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>拍摄时长：2小时</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>服装造型：2套</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>精修照片：20张</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>短视频：30S</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>10寸摆台2个</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>12寸相册1本</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>电子相册1份</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="select-package w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors" data-package="精选套餐" data-price="1299">选择套餐</button>
+                    </div>
+                </div>
+                
+                <!-- 豪华套餐 -->
+                <div class="price-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-gray-100 p-6">
+                        <h3 class="text-xl font-bold text-center mb-2">豪华套餐</h3>
+                        <p class="text-center text-gray-600 mb-4">尊享高品质拍摄体验</p>
+                        <div class="text-center">
+                            <span class="text-4xl font-bold">¥2599</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>拍摄时长：3小时</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>服装造型：3套</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>精修照片：40张</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>短视频：45S</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>12寸摆台3个</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>16寸相册1本</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>电子相册1份</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-primary mr-3"></i>
+                                <span>专属定制相框1个</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="select-package w-full bg-gray-200 text-dark py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors" data-package="豪华套餐" data-price="2599">选择套餐</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI智能推荐 -->
+            <div class="mt-16 bg-white rounded-lg shadow-lg p-8" data-aos="fade-up" data-aos-delay="400">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-6 md:mb-0">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-full w-20 h-20 flex items-center justify-center mx-auto">
+                            <i class="fa fa-lightbulb-o text-3xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-2/3 md:pl-8">
+                        <h3 class="text-2xl font-bold mb-4">AI智能套餐推荐</h3>
+                        <p class="text-gray-600 mb-6">不确定选择哪个套餐？告诉我们您的需求，AI将为您推荐最适合的拍摄方案</p>
+                        
+                        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                            <select id="family-members" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="">家庭成员数量</option>
+                                <option value="2">2人（1大1小）</option>
+                                <option value="3">3人（2大1小）</option>
+                                <option value="4">4人（2大2小）</option>
+                                <option value="5+">5人及以上</option>
+                            </select>
+                            
+                            <select id="child-age" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="">孩子年龄</option>
+                                <option value="0-1">0-1岁</option>
+                                <option value="1-3">1-3岁</option>
+                                <option value="3-6">3-6岁</option>
+                                <option value="6-12">6-12岁</option>
+                                <option value="12+">12岁以上</option>
+                            </select>
+                            
+                            <select id="shooting-style" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="">拍摄风格</option>
+                                <option value="indoor">室内温馨</option>
+                                <option value="outdoor">户外自然</option>
+                                <option value="theme">主题创意</option>
+                                <option value="casual">休闲生活</option>
+                            </select>
+                            
+                            <button id="ai-recommend-btn" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                                获取推荐
+                            </button>
+                        </div>
+                        
+                        <div id="ai-recommendation-result" class="mt-6 hidden">
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <h4 class="font-bold mb-2">AI推荐方案：<span id="recommended-package"></span></h4>
+                                <p id="recommendation-reason" class="text-gray-600"></p>
+                                <button id="select-recommended" class="mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">选择此方案</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">客户评价</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">听听我们的客户怎么说，他们的满意是对我们最大的肯定</p>
+            </div>
+            
+            <div class="testimonial-slider relative">
+                <div class="testimonial-track flex transition-transform duration-500" id="testimonial-track">
+                    <!-- 评价1 -->
+                    <div class="testimonial-card bg-gray-50 rounded-lg p-8 shadow-md min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-6">
+                            <div class="text-yellow-400 flex">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-gray-600">5.0</span>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6">"非常感谢花视摄影为我们家庭拍摄的亲子写真，摄影师非常有耐心，能够很好地引导孩子，拍出的照片自然又温馨，我们全家人都非常满意！"</p>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                            <div>
+                                <h4 class="font-bold">李女士</h4>
+                                <p class="text-gray-600 text-sm">3岁宝宝妈妈</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 评价2 -->
+                    <div class="testimonial-card bg-gray-50 rounded-lg p-8 shadow-md min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-6">
+                            <div class="text-yellow-400 flex">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-gray-600">5.0</span>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6">"花视摄影的服务非常专业，从预约到拍摄再到选片，整个过程都很顺畅。摄影师很会捕捉孩子的表情，拍出来的照片很有感染力，强烈推荐！"</p>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                            <div>
+                                <h4 class="font-bold">王先生</h4>
+                                <p class="text-gray-600 text-sm">5岁双胞胎爸爸</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 评价3 -->
+                    <div class="testimonial-card bg-gray-50 rounded-lg p-8 shadow-md min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center mb-6">
+                            <div class="text-yellow-400 flex">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                            <span class="ml-2 text-gray-600">4.5</span>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6">"我们选择了外景拍摄套餐，摄影师推荐的地点非常漂亮，拍出来的效果超出预期。后期制作也很用心，相册质量很好，是一次非常愉快的拍摄体验。"</p>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                            <div>
+                                <h4 class="font-bold">张女士</h4>
+                                <p class="text-gray-600 text-sm">2岁宝宝妈妈</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 评价4 -->
+                    <div class="testimonial-card bg-gray-50 rounded-lg p-8 shadow-md min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="flex items-center mb-6">
+                            <div class="text-yellow-400 flex">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-gray-600">5.0</span>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6">"为孩子的生日选择了花视摄影，主题布置很精美，摄影师很会调动孩子的情绪，拍出来的照片非常生动有趣，孩子也很开心，是一次难忘的生日回忆。"</p>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                            <div>
+                                <h4 class="font-bold">陈女士</h4>
+                                <p class="text-gray-600 text-sm">6岁宝宝妈妈</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="prev-testimonial" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md focus:outline-none z-10">
+                    <i class="fa fa-chevron-left text-primary"></i>
+                </button>
+                
+                <button id="next-testimonial" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md focus:outline-none z-10">
+                    <i class="fa fa-chevron-right text-primary"></i>
+                </button>
+                
+                <div class="flex justify-center mt-8">
+                    <div class="testimonial-dots flex space-x-2">
+                        <button class="w-3 h-3 rounded-full bg-primary"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">联系我们</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">预约咨询或了解更多信息，请填写下方表单或通过以下方式联系我们</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10" data-aos="fade-right">
+                    <form id="contact-form" class="bg-white rounded-lg shadow-lg p-8">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="请输入您的姓名">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">电话</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="请输入您的联系电话">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="package" class="block text-gray-700 font-medium mb-2">选择套餐</label>
+                            <select id="package" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="">请选择套餐</option>
+                                <option value="基础套餐">基础套餐 - ¥699</option>
+                                <option value="精选套餐">精选套餐 - ¥1299</option>
+                                <option value="豪华套餐">豪华套餐 - ¥2599</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="date" class="block text-gray-700 font-medium mb-2">预约日期</label>
+                            <input type="date" id="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">留言</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="请输入您的需求或问题"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors">提交预约</button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <div class="bg-white rounded-lg shadow-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full p-3 mr-4">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">地址</h4>
+                                    <p class="text-gray-600">广州市番禺区市头村中约大道1号桥郡外滩211号</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full p-3 mr-4">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">电话</h4>
+                                    <p class="text-gray-600">13112469907</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full p-3 mr-4">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">邮箱</h4>
+                                    <p class="text-gray-600">203325979@qq.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full p-3 mr-4">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">营业时间</h4>
+                                    <p class="text-gray-600">周一至周日 10:00-20:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">关注我们</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-primary bg-opacity-10 text-primary rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                                    <i class="fa fa-weixin"></i>
+                                </a>
+                                <a href="#" class="bg-primary bg-opacity-10 text-primary rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="bg-primary bg-opacity-10 text-primary rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-primary bg-opacity-10 text-primary rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                                    <i class="fa fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">常见问题</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <i class="fa fa-question-circle text-primary mr-2"></i>
+                                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">如何选择适合的套餐？</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa fa-question-circle text-primary mr-2"></i>
+                                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">拍摄前需要准备什么？</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa fa-question-circle text-primary mr-2"></i>
+                                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">照片多久可以拿到？</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa fa-question-circle text-primary mr-2"></i>
+                                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">可以修改预约时间吗？</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">花视摄影</h3>
+                    <p class="text-gray-400 mb-6">专业亲子写真拍摄，为您和孩子留下珍贵的成长记忆</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-tiktok text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">服务项目</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">儿童写真</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">亲子合影</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">家庭照</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">生日主题</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">外景拍摄</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">服务项目</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition-colors">作品展示</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">套餐价格</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">客户评价</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系方式</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">广州市番禺区市头村中约大道1号桥郡外滩211号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">13112469907</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">203325979@qq.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-clock-o text-primary mr-3"></i>
+                            <span class="text-gray-400">周一至周日 9:00-18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2025 广州花视拍照摄影有限公司. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 图片查看器模态框 -->
+    <div id="image-viewer" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
+        <button id="close-viewer" class="absolute top-4 right-4 text-white text-2xl">
+            <i class="fa fa-times"></i>
+        </button>
+        
+        <div class="container mx-auto px-4">
+            <img id="viewer-image" src="" alt="查看大图" class="max-w-full max-h-[80vh] mx-auto">
+        </div>
+    </div>
+
+    <!-- 预约成功模态框 -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md mx-4">
+            <div class="text-center">
+                <div class="bg-green-100 text-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                    <i class="fa fa-check text-2xl"></i>
+                </div>
+                
+                <h3 class="text-2xl font-bold mb-2">预约成功</h3>
+                <p class="text-gray-600 mb-6">感谢您的预约，我们将尽快与您联系确认详情</p>
+                
+                <button id="close-modal" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-colors">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化AOS动画库
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // 导航菜单切换
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 移动端菜单项点击后关闭菜单
+            const mobileMenuItems = mobileMenu.querySelectorAll('a');
+            mobileMenuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // 英雄区域轮播
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            // 每5秒切换一次轮播图
+            setInterval(nextSlide, 5000);
+            
+            // 作品展示筛选功能
+            const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 移除所有按钮的active状态
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'bg-primary', 'text-white');
+                        b.classList.add('bg-gray-200', 'text-dark');
+                    });
+                    
+                    // 添加当前按钮的active状态
+                    this.classList.add('active', 'bg-primary', 'text-white');
+                    this.classList.remove('bg-gray-200', 'text-dark');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // 筛选作品
+                    galleryItems.forEach(item => {
+                        const categories = item.getAttribute('data-category').split(' ');
+                        
+                        if (filter === 'all' || categories.includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // 图片查看器功能
+            const imageViewer = document.getElementById('image-viewer');
+            const viewerImage = document.getElementById('viewer-image');
+            const closeViewer = document.getElementById('close-viewer');
+            const viewImageBtns = document.querySelectorAll('.view-image');
+            
+            viewImageBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const imageSrc = this.getAttribute('data-image');
+                    viewerImage.setAttribute('src', imageSrc);
+                    imageViewer.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                });
+            });
+            
+            closeViewer.addEventListener('click', function() {
+                imageViewer.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // 恢复背景滚动
+            });
+            
+            // 点击模态框背景关闭
+            imageViewer.addEventListener('click', function(e) {
+                if (e.target === imageViewer) {
+                    imageViewer.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // 套餐选择功能
+            const selectPackageBtns = document.querySelectorAll('.select-package');
+            const packageSelect = document.getElementById('package');
+            
+            selectPackageBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const packageName = this.getAttribute('data-package');
+                    const packagePrice = this.getAttribute('data-price');
+                    
+                    // 选中对应的套餐选项
+                    for (let i = 0; i < packageSelect.options.length; i++) {
+                        if (packageSelect.options[i].value === packageName) {
+                            packageSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                    
+                    // 滚动到联系表单
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // AI套餐推荐功能
+            const aiRecommendBtn = document.getElementById('ai-recommend-btn');
+            const familyMembers = document.getElementById('family-members');
+            const childAge = document.getElementById('child-age');
+            const shootingStyle = document.getElementById('shooting-style');
+            const aiRecommendationResult = document.getElementById('ai-recommendation-result');
+            const recommendedPackage = document.getElementById('recommended-package');
+            const recommendationReason = document.getElementById('recommendation-reason');
+            const selectRecommendedBtn = document.getElementById('select-recommended');
+            
+            aiRecommendBtn.addEventListener('click', function() {
+                // 检查是否填写了所有选项
+                if (!familyMembers.value || !childAge.value || !shootingStyle.value) {
+                    alert('请填写完整的信息以获取AI推荐');
+                    return;
+                }
+                
+                // 根据用户选择生成推荐结果
+                let recommendation = '';
+                let reason = '';
+                
+                if (familyMembers.value === '2' && (childAge.value === '0-1' || childAge.value === '1-3')) {
+                    recommendation = '基础套餐';
+                    reason = '对于1大1小且孩子年龄较小的家庭，基础套餐提供的1小时拍摄时间和1套服装足够捕捉孩子的精彩瞬间，不会让年幼的孩子感到疲劳。';
+                } else if (familyMembers.value === '3' || familyMembers.value === '4') {
+                    recommendation = '精选套餐';
+                    reason = '对于家庭成员较多的情况，精选套餐提供的2小时拍摄时间和2套服装可以更好地满足多人组合拍摄的需求，捕捉更多精彩瞬间。';
+                } else if (familyMembers.value === '5+' || shootingStyle.value === 'theme') {
+                    recommendation = '豪华套餐';
+                    reason = '对于大家庭或选择主题拍摄的客户，豪华套餐提供的3小时拍摄时间、3套服装和更多的精修照片可以充分满足复杂场景和多人组合的拍摄需求。';
+                } else {
+                    recommendation = '精选套餐';
+                    reason = '根据您提供的信息，精选套餐是最平衡的选择，提供足够的拍摄时间和服装选择，同时价格适中，能够满足大多数家庭的需求。';
+                }
+                
+                // 显示推荐结果
+                recommendedPackage.textContent = recommendation;
+                recommendationReason.textContent = reason;
+                aiRecommendationResult.classList.remove('hidden');
+                
+                // 设置选择推荐套餐按钮的功能
+                selectRecommendedBtn.onclick = function() {
+                    // 选中对应的套餐选项
+                    for (let i = 0; i < packageSelect.options.length; i++) {
+                        if (packageSelect.options[i].value === recommendation) {
+                            packageSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                    
+                    // 滚动到联系表单
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                };
+            });
+            
+            // 客户评价轮播功能
+            const testimonialTrack = document.getElementById('testimonial-track');
+            const prevBtn = document.getElementById('prev-testimonial');
+            const nextBtn = document.getElementById('next-testimonial');
+            const dots = document.querySelectorAll('.testimonial-dots button');
+            let currentSlideIndex = 0;
+            const slideCount = document.querySelectorAll('.testimonial-card').length;
+            const slidesToShow = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+            
+            function updateSlidePosition() {
+                const slideWidth = 100 / slidesToShow;
+                testimonialTrack.style.transform = `translateX(-${currentSlideIndex * slideWidth}%)`;
+                
+                // 更新指示点
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('bg-primary', index === currentSlideIndex);
+                    dot.classList.toggle('bg-gray-300', index !== currentSlideIndex);
+                });
+            }
+            
+            prevBtn.addEventListener('click', function() {
+                currentSlideIndex = Math.max(0, currentSlideIndex - 1);
+                updateSlidePosition();
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                currentSlideIndex = Math.min(slideCount - slidesToShow, currentSlideIndex + 1);
+                updateSlidePosition();
+            });
+            
+            // 点击指示点切换轮播
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    currentSlideIndex = index;
+                    updateSlidePosition();
+                });
+            });
+            
+            // 窗口大小变化时重新计算轮播
+            window.addEventListener('resize', function() {
+                const newSlidesToShow = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+                
+                if (newSlidesToShow !== slidesToShow) {
+                    slidesToShow = newSlidesToShow;
+                    currentSlideIndex = 0;
+                    updateSlidePosition();
+                }
+            });
+            
+            // 表单提交功能
+            const contactForm = document.getElementById('contact-form');
+            const successModal = document.getElementById('success-modal');
+            const closeModal = document.getElementById('close-modal');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 获取表单数据
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const selectedPackage = document.getElementById('package').value;
+                const date = document.getElementById('date').value;
+                
+                // 简单验证
+                if (!name || !phone || !selectedPackage || !date) {
+                    alert('请填写完整的预约信息');
+                    return;
+                }
+                
+                // 显示预约成功模态框
+                successModal.classList.remove('hidden');
+                
+                // 重置表单
+                contactForm.reset();
+            });
+            
+            closeModal.addEventListener('click', function() {
+                successModal.classList.add('hidden');
+            });
+            
+            // 点击模态框背景关闭
+            successModal.addEventListener('click', function(e) {
+                if (e.target === successModal) {
+                    successModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body></html>
